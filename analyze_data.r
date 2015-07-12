@@ -23,6 +23,6 @@ co_join <- coef(lm(time ~ number_of_records, data = join))
 
 # Drop plot and set labels
 pl <- qplot(time, data = all, x = number_of_records, color=strategy,  geom = c("point", "smooth"))
-subquery_label <- annotate("text", x = 100, y = 700,  label = paste("Subquery = ", round(co_subquery[1],5), " * x + ", round(co_subquery[2],5)), color=gg_color_hue(2)[1])
-join_label     <- annotate("text", x = 100, y = 50, label = paste("Join = ",     round(co_join[1],5), " * x + ", round(co_join[2],5)), color=gg_color_hue(2)[2])
+subquery_label <- annotate("text", x = 100, y = 700, label = paste("subquery(time) = ", round(co_subquery[2],5), " * x + ", round(co_subquery[1],5)), color=gg_color_hue(2)[1])
+join_label     <- annotate("text", x = 100, y = 50,  label = paste("join(time) = ",     round(co_join[2],5),     " * x + ", round(co_join[1],5)), color=gg_color_hue(2)[2])
 pl + join_label + subquery_label
